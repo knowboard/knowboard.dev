@@ -1,30 +1,48 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Knowboard
+description: Personal Knowledge Base
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: Personal Knowledge Base
+  # image:
+  #   file: ../../assets/houston.webp
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get Started
+      link: /guides/intro/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+    # - text: Read the Starlight docs
+    #   link: https://starlight.astro.build
+    #   icon: external
+    #   variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-## Next steps
+import { Card, CardGrid, Icon } from '@astrojs/starlight/components';
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="Markdown" icon="pencil">
+		Write in Markdown.
 	</Card>
-	<Card title="Change page layout" icon="document">
+	<Card title="Linking" icon="puzzle">
+		Connect relationships between your documents to find what you're looking for.
+	</Card>
+	<Card title="Querying" icon="magnifier">
+		Query your documents to build powerful dashboards.
+	</Card>
+	<Card title="Data sources" icon="seti:db">
+		Augment your documents with data from APIs, databases, or other sources.
+	</Card>
+	<Card title="Local files" icon="cloud-download">
+		Your documents live on your system. No cloud service required.
+	</Card>
+	<Card title="Editor extensions" icon="laptop">
+		Manage your documents right in your code editor.
+		<Icon name="vscode" />
+		<Icon name="zed" />
+		<Icon name="vim" />
+	</Card>
+
+
+	{/* <Card title="Change page layout" icon="document">
 		Delete `template: splash` in `src/content/docs/index.mdx` to display a
 		sidebar on this page.
 	</Card>
@@ -36,5 +54,5 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 	</Card>
 	<Card title="Read the docs" icon="open-book">
 		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+	</Card> */}
 </CardGrid>
