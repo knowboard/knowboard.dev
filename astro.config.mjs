@@ -16,15 +16,18 @@ export default defineConfig({
       ],
       sidebar: [
         {
-          label: "Guides",
+          label: "Getting Started",
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Intro", slug: "guides/intro" },
-            { label: "Installation", slug: "guides/install" },
-            { label: "Books example", slug: "guides/books" },
-            { label: "Querying", slug: "guides/querying" },
-            { label: "Data Shapes", slug: "guides/shapes" },
+            { label: "What is Knowboard", slug: "tutorial/intro" },
+            { label: "Installation", slug: "tutorial/install" },
+            { label: "Books example", slug: "tutorial/books" },
+            { label: "Querying", slug: "tutorial/querying" },
+            { label: "Data Shapes", slug: "tutorial/shapes" },
           ],
+        },
+        {
+          label: "Guides",
+          items: [],
         },
         {
           label: "Reference",

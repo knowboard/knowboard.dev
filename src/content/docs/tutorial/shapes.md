@@ -132,7 +132,7 @@ kbex:AuthorShape a sh:NodeShape ;
     "@type": xsd:date
 ```
 
-Now, hovering over an author should show a nicer description of that person:
+Now, hovering over an author should show a clearer description of that person:
 
 ```
 Jane Austen (schema:Person)

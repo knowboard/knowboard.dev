@@ -1,5 +1,5 @@
 ---
-title: Intro
+title: What is Knowboard?
 ---
 
 Knowboard turns Markdown files into a rich [Personal Knowledge Base](
