@@ -26,10 +26,10 @@ export default defineConfig({
             { label: "Data Shapes", slug: "guides/shapes" },
           ],
         },
-        // {
-        //   label: "Reference",
-        //   autogenerate: { directory: "reference" },
-        // },
+        {
+          label: "Reference",
+          autogenerate: { directory: "reference" },
+        },
       ],
     }),
   ],
