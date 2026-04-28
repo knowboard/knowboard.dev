@@ -13,19 +13,13 @@ describe just the fields that we use for this example.
 
 So far we've used YAML-LD for consistency, but since most of the documentation
 for SHACL uses the Turtle format, we'll switch to that for this section.
-(TODO: might be worth porting to keep it consistent?)
+<!-- TODO: might be worth porting to keep it consistent? -->
 
-We need to note that "Book" is a "Class" of data. Then we can start to describe the "shape" of that class, and list properties like the "name" that exist for that class:
-```
-schema:Book a owl:Class .
-```
+We can describe the "shape" of a Book, and list properties like the "name" that exist for that class:
 ```turtle title="shapes.ttl"
 @prefix kbex: <https://example.knowboard.dev/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <http://schema.org/> .
-
-schema:Book a owl:Class .
 
 kbex:BookShape a sh:NodeShape ;
     sh:targetClass schema:Book ;
@@ -53,9 +47,7 @@ Next we can add a similar description for the author's shape as a "Person" with
 a "name". In the "Book" shape, we can note that the "author" property should
 refer to a "Person".
 
-```turtle ins={7-10,13-19} title="shapes.ttl"
-schema:Book a owl:Class .
-
+```turtle ins={5-8,10-16} title="shapes.ttl"
 kbex:BookShape a sh:NodeShape ;
     sh:targetClass schema:Book ;
     sh:property [
@@ -65,8 +57,6 @@ kbex:BookShape a sh:NodeShape ;
         sh:path schema:author ;
         sh:class schema:Person ;
     ] .
-
-schema:Person a owl:Class .
 
 kbex:AuthorShape a sh:NodeShape ;
     sh:targetClass schema:Person ;
@@ -92,10 +82,8 @@ displayed as the title for that type. Additional properties can be designated
 with "KeyInfoRole" to add them to the summary with a label.
 
 
-```turtle ins={1,9,13,23-28} title="shapes.ttl"
+```turtle ins={1,7,11,19-24} title="shapes.ttl"
 @prefix dash: <http://datashapes.org/dash#> .
-
-schema:Book a owl:Class .
 
 kbex:BookShape a sh:NodeShape ;
     sh:targetClass schema:Book ;
@@ -108,8 +96,6 @@ kbex:BookShape a sh:NodeShape ;
         dash:propertyRole dash:KeyInfoRole ;
         sh:class schema:Person ;
     ] .
-
-schema:Person a owl:Class .
 
 kbex:AuthorShape a sh:NodeShape ;
     sh:targetClass schema:Person ;
