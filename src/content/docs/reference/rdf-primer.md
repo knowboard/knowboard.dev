@@ -3,7 +3,6 @@ title: RDF Primer
 # description:
 ---
 
-## RDF
 The [Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework) is a way to describe graph data. RDF is not one specific technology, but an ecosystem of a number of complementary ways of working with data. It includes a variety of file formats, querying support, and patterns for describing data.
 
 This document aims to cover the RDF fundamentals to start working with Knowboard. Users that wish to can incorporate more in-depth use of RDF, but the concepts described here form the core of Knowboard.
