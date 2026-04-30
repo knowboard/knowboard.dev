@@ -69,7 +69,7 @@ Documents can use the workspace-relative IRI to include the context:
 
 ```md title="document.md"
 ---
-"@context": http://example.knowboard.dev/context.yamlld
+"@context": tag:me@example.com,2026:my-workspace/context.yamlld
 schema:name: "Example document"
 ---
 ```
@@ -83,7 +83,7 @@ Contexts can be combined to reference a workspace context as well as additional 
 ```yaml title="document.md"
 ---
 "@context":
-  - http://example.knowboard.dev/context.yamlld
+  - tag:me@example.com,2026:my-workspace/context.yamlld
   - name: schema:name
 name: "Example document"
 ---

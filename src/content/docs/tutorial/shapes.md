@@ -17,7 +17,7 @@ for SHACL uses the Turtle format, we'll switch to that for this section.
 
 We can describe the "shape" of a Book, and list properties like the "name" that exist for that class:
 ```turtle title="shapes.ttl"
-@prefix kbex: <https://example.knowboard.dev/> .
+@prefix kbex: <tag:me@example.com,2026:my-workspace/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <http://schema.org/> .
 
@@ -35,7 +35,7 @@ pop up as a suggested field:
 ---
 "@context":
     "@vocab": "http://schema.org/"
-    "kbex": "https://example.knowboard.dev/"
+    "kbex": "tag:me@example.com,2026:my-workspace/"
 "@type": Book
 <try to auto-complete on this line>
 ---
@@ -112,7 +112,7 @@ kbex:AuthorShape a sh:NodeShape ;
 
 ```yaml ins={4,10-12,17-19} title="authors.yamlld"
 "@context":
-  "@base": "https://example.knowboard.dev/authors/"
+  "@base": "tag:me@example.com,2026:my-workspace/authors/"
   schema: "http://schema.org/"
   xsd: "http://www.w3.org/2001/XMLSchema#"
 

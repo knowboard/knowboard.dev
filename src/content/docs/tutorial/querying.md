@@ -31,16 +31,16 @@ $ npm install -g @comunica/query-sparql
 $ comunica-sparql http://localhost:17878/sparql -t table 'SELECT ?s ?p ?o WHERE { ?s ?p ?o }'
 s                                                  p                                                  o
 --------------------------------------------------------------------------------------------------------------------------------------------------------
-https://example.knowboard.dev/authors/jane-austen  http://schema.org/name                             Jane Austen
-https://example.knowboard.dev/authors/jane-austen  http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Person
-https://example.knowboard.dev/authors/f-scott-fit… http://schema.org/name                             F. Scott Fitzgerald
-https://example.knowboard.dev/authors/f-scott-fit… http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Person
-https://example.knowboard.dev/books/great-gatsby   http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Book
-https://example.knowboard.dev/books/great-gatsby   http://schema.org/name                             The Great Gatsby
-https://example.knowboard.dev/books/great-gatsby   http://schema.org/author                           https://example.knowboard.dev/authors/f-scott-fit…
-https://example.knowboard.dev/books/pride-and-pre… http://schema.org/author                           https://example.knowboard.dev/authors/jane-austen
-https://example.knowboard.dev/books/pride-and-pre… http://schema.org/name                             Pride and Prejudice
-https://example.knowboard.dev/books/pride-and-pre… http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Book
+tag:me@example.com,2026:my-workspace/authors/jane-austen  http://schema.org/name                             Jane Austen
+tag:me@example.com,2026:my-workspace/authors/jane-austen  http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Person
+tag:me@example.com,2026:my-workspace/authors/f-scott-fit… http://schema.org/name                             F. Scott Fitzgerald
+tag:me@example.com,2026:my-workspace/authors/f-scott-fit… http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Person
+tag:me@example.com,2026:my-workspace/books/great-gatsby   http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Book
+tag:me@example.com,2026:my-workspace/books/great-gatsby   http://schema.org/name                             The Great Gatsby
+tag:me@example.com,2026:my-workspace/books/great-gatsby   http://schema.org/author                           tag:me@example.com,2026:my-workspace/authors/f-scott-fit…
+tag:me@example.com,2026:my-workspace/books/pride-and-pre… http://schema.org/author                           tag:me@example.com,2026:my-workspace/authors/jane-austen
+tag:me@example.com,2026:my-workspace/books/pride-and-pre… http://schema.org/name                             Pride and Prejudice
+tag:me@example.com,2026:my-workspace/books/pride-and-pre… http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Book
 ```
 
 Listing out all of the data in the workspace is still quite verbose, so let's

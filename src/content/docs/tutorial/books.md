@@ -10,10 +10,7 @@ The location of this file is considered to be the "root" of the workspace.
 
 
 ```toml title=".knowboard.toml"
-# The "base_uri" should be a unique URI to identify the documents in this
-# workspace. It can be a public URL where these documents are hosted, but
-# does not have to be.
-base_uri = "https://example.knowboard.dev/"
+base_uri = "tag:me@example.com,2026:my-workspace/"
 
 # The default file extensions supported includes most commonly recognized
 # RDF file formats, as well as Markdown.
@@ -31,6 +28,8 @@ exclude = [".git/**"]
 This initial config defines which file extensions to include and exclude,
 along with a "base URI" which defines the namespace for the resources in the
 workspace.
+
+[Read more about picking a `base_uri`](/guides/base/)
 
 # Adding documents
 Most of your content will be stored in Markdown files. Let's start with an entry to describe a book:
@@ -80,7 +79,7 @@ We can add information about the authors for our books:
 
 ```yaml title="authors.yamlld"
 "@context":
-  "@base": https://example.knowboard.dev/authors/
+  "@base": tag:me@example.com,2026:my-workspace/authors/
   schema: http://schema.org/
 
 "@graph":
@@ -95,7 +94,7 @@ We can add information about the authors for our books:
 
 Here we specify `schema: http://schema.org/` as a different style of shorthand to the `@vocab` pattern above to let us be more explicit about where these terms are defined.
 
-The `@base` specifies the base URL for the contents, which is combined with the `@id` of the individual records to provide each a unique identifier, like `https://example.knowboard.dev/authors/jane-austen`
+The `@base` specifies the base URL for the contents, which is combined with the `@id` of the individual records to provide each a unique identifier, like `tag:me@example.com,2026:my-workspace/authors/jane-austen`
 
 We can update our book document to refer to an author:
 
@@ -103,7 +102,7 @@ We can update our book document to refer to an author:
 ---
 "@context":
   "@vocab": http://schema.org/
-  kbex: https://example.knowboard.dev/
+  kbex: tag:me@example.com,2026:my-workspace/
 "@type": Book
 name: Pride and Prejudice
 author:
