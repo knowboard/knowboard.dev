@@ -4,9 +4,13 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://www.knowboard.dev",
   integrations: [
     starlight({
       title: "Knowboard",
+      logo: {
+        src: "./src/assets/knowboard-blue-yellow.svg",
+      },
       social: [
         {
           icon: "github",
