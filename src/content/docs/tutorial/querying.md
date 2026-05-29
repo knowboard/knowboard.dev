@@ -8,43 +8,55 @@ starts to pay off by the expressiveness from being able to query all the
 information in your workspace.
 
 First, let's update the workspace config file to tell Knowboard we want to
-listen on a specific port:
+enable the SPARQL server:
 
 ```toml ins={3-5} title=".knowboard.toml"
 # ...
 exclude = [".git/**"]
 
 [sparql_server]
-listen = "17878"
+listen = "auto" # or specific port like "17878"
 ```
 
 :::note
-If you have multiple workspaces that you want to query, you will need to specify
-a different port for each one to listen on. Future Knowboard tools will enable
-querying support directly within the tools, but for now querying requires
-an external client.
+The value "auto" tells Knowboard to pick an arbitrary available port at startup.
+This is helpful in avoiding port conflicts, but also means the port will change
+each time you restart Knowboard. You can provide a specific port number as well,
+but this will need to be unique for each of your workspaces.
 :::
 
-The server works with common SPARQL clients like [comunica-sparql](https://comunica.dev/docs/query/getting_started/query_cli/) which we'll use for the examples:
-```sh
-$ npm install -g @comunica/query-sparql
-$ comunica-sparql http://localhost:17878/sparql -t table 'SELECT ?s ?p ?o WHERE { ?s ?p ?o }'
-s                                                  p                                                  o
---------------------------------------------------------------------------------------------------------------------------------------------------------
-tag:me@example.com,2026:my-workspace/authors/jane-austen  http://schema.org/name                             Jane Austen
-tag:me@example.com,2026:my-workspace/authors/jane-austen  http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Person
-tag:me@example.com,2026:my-workspace/authors/f-scott-fit… http://schema.org/name                             F. Scott Fitzgerald
-tag:me@example.com,2026:my-workspace/authors/f-scott-fit… http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Person
-tag:me@example.com,2026:my-workspace/books/great-gatsby   http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Book
-tag:me@example.com,2026:my-workspace/books/great-gatsby   http://schema.org/name                             The Great Gatsby
-tag:me@example.com,2026:my-workspace/books/great-gatsby   http://schema.org/author                           tag:me@example.com,2026:my-workspace/authors/f-scott-fit…
-tag:me@example.com,2026:my-workspace/books/pride-and-pre… http://schema.org/author                           tag:me@example.com,2026:my-workspace/authors/jane-austen
-tag:me@example.com,2026:my-workspace/books/pride-and-pre… http://schema.org/name                             Pride and Prejudice
-tag:me@example.com,2026:my-workspace/books/pride-and-pre… http://www.w3.org/1999/02/22-rdf-syntax-ns#type    http://schema.org/Book
+Knowboard provides a simple web-based SPARQL UI. The UI can be opened using the VSCode Command Pallete:
+
+```
+Cmd+Shift+P (Mac)
+Ctrl+Shift+P (Windows)
+
+> KnowBoard: Open SPARQL UI
 ```
 
-Listing out all of the data in the workspace is still quite verbose, so let's
-write a more specific query:
+Or if you have a specific port defined, you can navigate directly to it in the browser, such as `http://localhost:17878`.
+
+Knowboard can also be used with a variety of standard [SPARQL clients](../../reference/sparql-clients/)
+
+## Testing a query
+
+In SPARQL the basic "show me everything" query looks like this:
+
+```sparql
+SELECT * WHERE { ?subject ?predicate ?object } LIMIT 3
+```
+
+This should return a selection of the information we've defined in the workspace like:
+
+| subject                                                         | predicate                                       | object                   |
+| --------------------------------------------------------------- | ----------------------------------------------- | ------------------------ |
+| tag:me@example.com,2026:my-workspace/authors/jane-austen        | http://schema.org/name                          | Jane Austen              |
+| tag:me@example.com,2026:my-workspace/authors/jane-austen        | http://www.w3.org/1999/02/22-rdf-syntax-ns#type | http://schema.org/Person |
+| tag:me@example.com,2026:my-workspace/authors/f-scott-fitzgerald | http://schema.org/name                          | F. Scott Fitzgerald      |
+
+## Structuring the results
+
+To get something more insightful, SPARQL enables us to query the structure and connections between different items, such as associating book titles with the author's name:
 
 ```sparql title="query.rq"
 PREFIX schema: <http://schema.org/>
@@ -57,14 +69,9 @@ SELECT ?bookName ?authorName WHERE {
 }
 ```
 
-```sh
-$ comunica-sparql http://localhost:17878/sparql -t table -f query.rq
-bookName                   authorName
-------------------------------------------------
-The Great Gatsby           F. Scott Fitzgerald
-Pride and Prejudice        Jane Austen
-```
+| bookName            | authorName          |
+| ------------------- | ------------------- |
+| The Great Gatsby    | F. Scott Fitzgerald |
+| Pride and Prejudice | Jane Austen         |
 
-This documentation will focus mainly on Knowboard-specific patterns for using
-SPARQL, but there are other general guides to learn more about the query
-language itself.
+See the references for additional [SPARQL resources](../../reference/rdf-primer/#sparql).
