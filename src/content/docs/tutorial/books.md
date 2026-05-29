@@ -8,7 +8,6 @@ description: A guide in my new Starlight docs site.
 Knowboard looks for a `.knowboard.toml` file to configure the workspace.
 The location of this file is considered to be the "root" of the workspace.
 
-
 ```toml title=".knowboard.toml"
 base_uri = "tag:me@example.com,2026:my-workspace/"
 
@@ -32,6 +31,7 @@ workspace.
 [Read more about picking a `base_uri`](/guides/base/)
 
 # Adding documents
+
 Most of your content will be stored in Markdown files. Let's start with an entry to describe a book:
 
 ```md title="books/pride-and-prejudice.md"
@@ -45,11 +45,11 @@ name: Pride and Prejudice
 ---
 
 # Markdown body
+
 Use the body of the document to add notes, or other content.
 ```
 
-The properties are specified in a format called [YAML-LD](
-https://w3c.github.io/yaml-ld/). We will save more details about the format for later, but for the examples, the key thing to understand is that the `@vocab` says where the terms used in the document are defined.
+The properties are specified in a format called [YAML-LD](https://w3c.github.io/yaml-ld/). We will save more details about the format for later, but for the examples, the key thing to understand is that the `@vocab` says where the terms used in the document are defined.
 
 So, here `Book` corresponds to https://schema.org/Book, and `name` to
 https://schema.org/name. You can (and should) also come up with your own
@@ -83,13 +83,13 @@ We can add information about the authors for our books:
   schema: http://schema.org/
 
 "@graph":
-- "@id": f-scott-fitzgerald
-  "@type": schema:Person
-  schema:name: F. Scott Fitzgerald
+  - "@id": f-scott-fitzgerald
+    "@type": schema:Person
+    schema:name: F. Scott Fitzgerald
 
-- "@id": jane-austen
-  "@type": schema:Person
-  schema:name: Jane Austen
+  - "@id": jane-austen
+    "@type": schema:Person
+    schema:name: Jane Austen
 ```
 
 Here we specify `schema: http://schema.org/` as a different style of shorthand to the `@vocab` pattern above to let us be more explicit about where these terms are defined.
@@ -111,5 +111,9 @@ author:
 ```
 
 :::tip[Code intelligence]
-Try hovering the mouse pointer over `kbex:authors/jane-austen` to see more information about the linked entry.
+Try hovering the mouse pointer over `kbex:authors/jane-austen` to see more information about the linked entry.!!!
+
+<video autoplay muted loop playsinline>
+  <source src="../../../recordings/hover-jane-austen-basic.mp4" type="video/mp4" />
+</video>
 :::
