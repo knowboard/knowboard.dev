@@ -25,7 +25,9 @@ each time you restart Knowboard. You can provide a specific port number as well,
 but this will need to be unique for each of your workspaces.
 :::
 
-Knowboard provides a simple web-based SPARQL UI. The UI can be opened using the VSCode Command Pallete:
+Knowboard provides a simple web-based SPARQL UI.
+
+In VSCode the UI can be opened using the Command Pallete:
 
 ```
 Cmd+Shift+P (Mac)
@@ -33,6 +35,11 @@ Ctrl+Shift+P (Windows)
 
 > KnowBoard: Open SPARQL UI
 ```
+
+Knowboard also provides a Code Lens in the `.knowboard.toml` config to open
+a browser to the UI:
+
+![Screenshot of knowboard config file with "Open SPARQL UI"](../../../assets/sparql-ui-code-lens.png)
 
 Or if you have a specific port defined, you can navigate directly to it in the browser, such as `http://localhost:17878`.
 
