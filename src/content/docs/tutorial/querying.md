@@ -33,7 +33,7 @@ In VSCode the UI can be opened using the Command Pallete:
 Cmd+Shift+P (Mac)
 Ctrl+Shift+P (Windows)
 
-> KnowBoard: Open SPARQL UI
+> Knowboard: Open SPARQL UI
 ```
 
 Knowboard also provides a Code Lens in the `.knowboard.toml` config to open

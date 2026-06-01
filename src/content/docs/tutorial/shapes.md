@@ -6,16 +6,18 @@ title: Data Shapes
 As your workspace grows it can help to describe what fields and relationships
 exist for different types of data.
 
-KnowBoard recognizes the [Shapes Constraint Language](https://www.w3.org/TR/shacl/)
+Knowboard recognizes the [Shapes Constraint Language](https://www.w3.org/TR/shacl/)
 (SHACL) to describe your data. Public entities like schema.org may provide their
 own shapes, but we'll build up a simple representation of the shapes to
 describe just the fields that we use for this example.
 
 So far we've used YAML-LD for consistency, but since most of the documentation
 for SHACL uses the Turtle format, we'll switch to that for this section.
+
 <!-- TODO: might be worth porting to keep it consistent? -->
 
 We can describe the "shape" of a Book, and list properties like the "name" that exist for that class:
+
 ```turtle title="shapes.ttl"
 @prefix kbex: <tag:me@example.com,2026:my-workspace/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -31,6 +33,7 @@ kbex:BookShape a sh:NodeShape ;
 In one of your book documents, try adding a blank line, and
 activate your editor's auto-complete. You should see "name"
 pop up as a suggested field:
+
 ```md
 ---
 "@context":
@@ -81,7 +84,6 @@ By designating one property in the shape as the "LabelRole", this will be
 displayed as the title for that type. Additional properties can be designated
 with "KeyInfoRole" to add them to the summary with a label.
 
-
 ```turtle ins={1,7,11,19-24} title="shapes.ttl"
 @prefix dash: <http://datashapes.org/dash#> .
 
@@ -117,19 +119,19 @@ kbex:AuthorShape a sh:NodeShape ;
   xsd: "http://www.w3.org/2001/XMLSchema#"
 
 "@graph":
-- "@id": f-scott-fitzgerald
-  "@type": schema:Person
-  schema:name: F. Scott Fitzgerald
-  schema:birthDate:
-    "@value": 1896-09-24
-    "@type": xsd:date
+  - "@id": f-scott-fitzgerald
+    "@type": schema:Person
+    schema:name: F. Scott Fitzgerald
+    schema:birthDate:
+      "@value": 1896-09-24
+      "@type": xsd:date
 
-- "@id": jane-austen
-  "@type": schema:Person
-  schema:name: Jane Austen
-  schema:birthDate:
-    "@value": 1775-12-16
-    "@type": xsd:date
+  - "@id": jane-austen
+    "@type": schema:Person
+    schema:name: Jane Austen
+    schema:birthDate:
+      "@value": 1775-12-16
+      "@type": xsd:date
 ```
 
 Now, hovering over an author should show a clearer description of that person:
