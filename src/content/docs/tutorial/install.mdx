@@ -4,8 +4,8 @@ title: Installation
 
 import { LinkButton } from '@astrojs/starlight/components';
 
-:::tip[Coming soon!]{icon="rocket"}
-This is a preview of the Knowboard documentation. For updates on the release,
+:::tip[More Coming soon!]{icon="rocket"}
+Knowboard is still in early development. For updates on releases,
 please follow Knowboard on GitHub.
 
 <LinkButton
@@ -17,3 +17,40 @@ please follow Knowboard on GitHub.
   Follow @knowboard
 </LinkButton>
 :::
+
+
+## VS Code
+
+Install the [Knowboard vscode extension](https://marketplace.visualstudio.com/items?itemName=knowboard.knowboard-vscode).
+
+## Zed
+
+A Zed extension is available [in the knowboard
+repo](https://github.com/knowboard/knowboard/tree/main/editors/zed) but it has
+not been published to the Zed extensions listing yet.
+
+If you want to try it out you can clone the repository:
+
+```sh
+git clone https://github.com/knowboard/knowboard
+```
+
+In the Zed command palette, run `zed: install dev extension` and select the
+`editors/zed` from your clone.
+
+## Manual
+
+Knowboard is implemented as a [Language Server](https://langserver.org) which
+can be installed with other editors that support it.
+
+The Language Server is distrubuted as a standalone binary which can be
+downloaded from the [GitHub Releases](https://github.com/knowboard/knowboard/releases).
+
+## Updates
+
+The extensions will automatically fetch the current LSP from GitHub releases
+and start it.
+
+You can also download the binary manually and put it on the PATH. However, in
+this case the extension will no longer automatically fetch updates, so you will
+need to update the binary yourself when a new release is available.
