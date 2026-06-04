@@ -3,117 +3,52 @@ title: Books
 description: A guide in my new Starlight docs site.
 ---
 
+To demonstrate some of the features of Knowboard, we'll walk through setting up a workspace with a couple documents describing a couple of books.
+
+This tutorial will show how to:
+
+- add properties describing the books
+- link and navigate between documents
+- augment your documents with separate "data files"
+- use [queries](../querying) to explore the data
+- add [shapes](../shapes) to describe the structures
+
 # Configuring a workspace
 
-Knowboard looks for a `.knowboard.toml` file to configure the workspace.
-The location of this file is considered to be the "root" of the workspace.
+Start by creating a `.knowboard.toml` at the base directory where your documents will be stored.
 
 ```toml title=".knowboard.toml"
 base_uri = "tag:me@example.com,2026:my-workspace/"
-
-# The default file extensions supported includes most commonly recognized
-# RDF file formats, as well as Markdown.
-include = [
-  "**/*.md",
-  "**/*.ttl",    # https://www.w3.org/TR/turtle/
-  "**/*.jsonld", # https://www.w3.org/TR/json-ld/
-  "**/*.yamlld", # https://www.w3.org/TR/yaml-ld/
-  "**/*.nt",     # https://www.w3.org/TR/n-triples/
-  "**/*.rdf",    # https://www.w3.org/TR/rdf-xml/
-]
-exclude = [".git/**"]
 ```
 
-This initial config defines which file extensions to include and exclude,
-along with a "base URI" which defines the namespace for the resources in the
-workspace.
+The `base_uri` here should use your email address, a date (usually just the current year is sufficient) and a name. This will serve as a unique prefix for the documents in this workspace, which we'll look at more later when using this to identify contents in the workspace.
 
-[Read more about picking a `base_uri`](/guides/base/)
+For alternative formats, [read more about picking a `base_uri`](/guides/base/).
 
 # Adding documents
 
 Most of your content will be stored in Markdown files. Let's start with an entry to describe a book:
 
 ```md title="books/pride-and-prejudice.md"
----
-# At the start of the file, this section between
-# "---" markers defines structured properties about the document
-"@context":
-  "@vocab": http://schema.org/
-"@type": Book
-name: Pride and Prejudice
----
-
-# Markdown body
+# Pride and Prejudice
 
 Use the body of the document to add notes, or other content.
 ```
 
-The properties are specified in a format called [YAML-LD](https://w3c.github.io/yaml-ld/). We will save more details about the format for later, but for the examples, the key thing to understand is that the `@vocab` says where the terms used in the document are defined.
-
-So, here `Book` corresponds to https://schema.org/Book, and `name` to
-https://schema.org/name. You can (and should) also come up with your own
-terminology, which we'll get into more later, but using well-defined terms from
-sources like schema.org can help in structuring your data.
-
 Let's add one more book to work with:
 
-```md title="books/great-gatsby"
----
-"@context":
-  "@vocab": http://schema.org/
-"@type": Book
-name: The Great Gatsby
----
+```md title="books/great-gatsby.md"
+# The Great Gatsby
+
+Planning to read this after [[pride-and-prejudice]]
 ```
 
-# Data files
+If Knowboard is running, you should see a preview like this when you hover over
+the Wiki Link in the document:
 
-Markdown documents are useful when you want to write more about the subject, but sometimes it's helpful to describe multiple different subjects in the same file.
+![code hover for "pride and prejudice"](../../../assets/books-hover-simple.png)
 
-:::tip[File formats]
-Knowboard supports most of the common file formats for RDF data, including [Turtle](https://www.w3.org/TR/turtle/) and [N-Triples](https://www.w3.org/TR/n-triples/). These each can have their advantages, but we'll mostly stick to YAML-LD for consistency since that is supported in the Markdown files.
-:::
+Using your editor's shortcut (e.g. `Cmd Click` or `Ctrl Click`) should navigate
+to the other document.
 
-We can add information about the authors for our books:
-
-```yaml title="authors.yamlld"
-"@context":
-  "@base": tag:me@example.com,2026:my-workspace/authors/
-  schema: http://schema.org/
-
-"@graph":
-  - "@id": f-scott-fitzgerald
-    "@type": schema:Person
-    schema:name: F. Scott Fitzgerald
-
-  - "@id": jane-austen
-    "@type": schema:Person
-    schema:name: Jane Austen
-```
-
-Here we specify `schema: http://schema.org/` as a different style of shorthand to the `@vocab` pattern above to let us be more explicit about where these terms are defined.
-
-The `@base` specifies the base URL for the contents, which is combined with the `@id` of the individual records to provide each a unique identifier, like `tag:me@example.com,2026:my-workspace/authors/jane-austen`
-
-We can update our book document to refer to an author:
-
-```md ins={4,7-8} title="books/pride-and-prejudice.md"
----
-"@context":
-  "@vocab": http://schema.org/
-  kbex: tag:me@example.com,2026:my-workspace/
-"@type": Book
-name: Pride and Prejudice
-author:
-  "@id": kbex:authors/jane-austen
----
-```
-
-:::tip[Code intelligence]
-Try hovering the mouse pointer over `kbex:authors/jane-austen` to see more information about the linked entry.!!!
-
-<video autoplay muted loop playsinline>
-  <source src="../../../recordings/hover-jane-austen-basic.mp4" type="video/mp4" />
-</video>
-:::
+Next we'll start adding more structured properties to the documents.

@@ -25,6 +25,8 @@ export default defineConfig({
             { label: "What is Knowboard", slug: "tutorial/intro" },
             { label: "Installation", slug: "tutorial/install" },
             { label: "Books example", slug: "tutorial/books" },
+            { label: "Contextualizing", slug: "tutorial/contextualizing" },
+            { label: "Data Files", slug: "tutorial/data-files" },
             { label: "Querying", slug: "tutorial/querying" },
             { label: "Data Shapes", slug: "tutorial/shapes" },
           ],
