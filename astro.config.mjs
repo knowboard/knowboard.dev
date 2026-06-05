@@ -36,6 +36,10 @@ export default defineConfig({
           items: [{ autogenerate: { directory: "guides" } }],
         },
         {
+          label: "Explanations",
+          items: [{ autogenerate: { directory: "explanation" } }],
+        },
+        {
           label: "Reference",
           items: [{ autogenerate: { directory: "reference" } }],
         },
