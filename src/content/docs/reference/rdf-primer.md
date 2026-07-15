@@ -35,12 +35,10 @@ Many tools expect the frontmatter to contain YAML (though some tools support oth
 [Turtle](https://www.w3.org/TR/turtle/) (`.ttl`, "Terse RDF Triple Language") is another file format for writing RDF. Turtle is designed to be a compact format and human-readable, so many RDF examples found online are provided in Turtle syntax.
 
 ## SPARQL
-[SPARQL](https://www.w3.org/TR/sparql-query/) is the standard query language for RDF graphs.
 
-<!-- ## OWL
-https://www.w3.org/TR/owl2-overview/
-Web Ontology Language -->
+See the [SPARQL reference docs](../sparql/)
 
 ## SHACL
+
 https://www.w3.org/TR/shacl/
 Shapes Constraint Language

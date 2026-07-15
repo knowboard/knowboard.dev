@@ -1,0 +1,98 @@
+---
+title: Configuration
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Workspace
+
+`.knowboard.toml` defines settings for the contents of the workspace directory.
+
+```toml
+# required: the "namespace" for this workspace,
+# prepended to the file names to identify subjects
+base_uri = "tag:me@example.com,2026:my-workspace/"
+
+# optional: a context to add by default when creating new
+# Markdown, YAML-LD, or JSON-LD files
+# must specify the IRI of a YAML-LD or JSON-LD
+# file in the workspace
+new_file_context = "tag:me@example.com,2026:my-workspace/schema/context.yamlld"
+
+# optional: File patterns to register with the LSP.
+# Patterns can be removed or refined to limit
+# what the LSP.
+# However, adding new extensions will have no effect
+# since the LSP does not know what parser to use.
+include = [
+  "**/*.ttl",
+  "**/*.jsonld",
+  "**/*.yamlld",
+  "**/*.md",
+  "**/*.nt",
+  "**/*.rdf",
+  "**/*.owl",
+  "**/*.rq",
+  "**/*.sparql",
+]
+
+# optional: File patterns to exclude from the LSP.
+# Defaults to hidden files and some common cache directories.
+exclude = [
+  "**/.*/**",
+  "**/target/**",
+  "**/node_modules/**",
+]
+
+# optional: enable the SPARQL server for external
+# query access
+[sparql_server]
+# specify a port number to listen on
+listen = "7878" # available at localhost:7878
+# listen = "0.0.0.0:7878" # listen on a specific host, or all 0s for "all" available IPs
+# listen = "auto" # chooses a random available port at startup
+```
+
+## Language Server
+
+Some settings that are more internal to the Language Server are defined in the editor-specific configuration for the LSP.
+
+<Tabs syncKey="editor">
+  <TabItem label="VSCode">
+    These are also available in the VSCode settings UI under `Extensions > Knowboard`.
+
+    ```json title="settings.json"
+    // enable sparql update queries
+    "knowboard.experimental.sparqlUpdates": true,
+    ```
+  </TabItem>
+  <TabItem label="Neovim">
+    ```lua title="~/.nvim/lsp/knowboard.lua"
+    return {
+      cmd = { "knowboard-lsp" },
+      -- Neovim expects the LSP config to include specific file types to enable
+      filetypes = { "ttl", "jsonld", "yamlld", "markdown", "nt", "rdf", "toml", "sparql" },
+      root_markers = { ".knowboard.toml" },
+      init_options = {
+        experimental = {
+          -- enable sparql update queries
+          sparqlUpdates = true,
+        },
+      },
+    }
+    ```
+  </TabItem>
+  <TabItem label="Zed">
+  ```json title="settings.json"
+  "lsp": {
+    "knowboard-lsp": {
+      "initialization_options": {
+        "experimental": {
+          // enable sparql update queries
+          "sparqlUpdates": true,
+        }
+      },
+    }
+  }
+  ```
+  </TabItem>
+</Tabs>

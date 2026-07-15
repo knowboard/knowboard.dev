@@ -43,7 +43,7 @@ a browser to the UI:
 
 Or if you have a specific port defined, you can navigate directly to it in the browser, such as `http://localhost:17878`.
 
-Knowboard can also be used with a variety of standard [SPARQL clients](../../reference/sparql-clients/)
+Knowboard can also be used with a variety of standard [SPARQL clients](../../reference/sparql/#clients)
 
 ## Testing a query
 
