@@ -17,6 +17,9 @@ importers:
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
+      starlight-theme-rose-pine:
+        specifier: ^0.3.1
+        version: 0.3.1(@astrojs/starlight@0.43.1(astro@7.4.12(@types/node@26.6.6)(yaml@2.9.1)))
 
 packages:
 
@@ -1557,6 +1560,12 @@ packages:
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
+
+  starlight-theme-rose-pine@0.3.1:
+    resolution: {integrity: sha512-XtXhAmqNfnhHMJwErhWIpGXJyrrxfwKewPq5BGBGIL5MjLaubWZbe/yg/glRGlnV3lcvgZ+lIu6pHOuMeN9lxQ==}
+    engines: {node: '>=22.12.0'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.42.0'
 
   std-env@4.3.0:
     resolution: {integrity: sha512-OtU/EgQ1kIm5KwqQpBC6ZEMXrZRui11w8zgfTWp8cdO9B8OaPsbA8bTHO2P+HNo1VlUTGMVBwPhydu6poeXiag==}
@@ -3466,6 +3475,10 @@ snapshots:
   source-map-js@1.2.2: {}
 
   space-separated-tokens@2.0.2: {}
+
+  starlight-theme-rose-pine@0.3.1(@astrojs/starlight@0.43.1(astro@7.4.12(@types/node@26.6.6)(yaml@2.9.1))):
+    dependencies:
+      '@astrojs/starlight': 0.43.1(astro@7.4.12(@types/node@26.6.6)(yaml@2.9.1))
 
   std-env@4.3.0: {}
 

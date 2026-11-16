@@ -1,15 +1,17 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightThemeRosePine from "starlight-theme-rose-pine";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.knowboard.dev",
   integrations: [
     starlight({
+      plugins: [starlightThemeRosePine()],
       title: "Knowboard",
       logo: {
-        src: "./src/assets/knowboard-blue-yellow.svg",
+        src: "./src/assets/knowboard.svg",
       },
       social: [
         {

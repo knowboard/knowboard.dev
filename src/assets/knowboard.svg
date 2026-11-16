@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="knowboard-blue-yellow-smooth" width="200" height="200" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+<title>Knowboard icon</title>
+<defs>
+<clipPath id="b-clip"><rect x="132" y="20" width="55" height="160"/></clipPath>
+</defs>
+<!-- <g id="outer" fill="#00263b"><rect x="0" y="0" width="200" height="200"/></g> -->
+<g id="kfg" fill="#4e828b"><path d="M 12 20 H 132 L 56 100 L 132 180 H 12 Z"/></g>
+<g id="b" fill="#ca5e5d" clip-path="url(#b-clip)">
+<rect x="132" y="20" width="25" height="160"/>
+<ellipse cx="157" cy="60" rx="30" ry="40"/>
+<ellipse cx="157" cy="140" rx="30" ry="40"/>
+</g>
+<g id="inner" fill="#dfb086"><polygon points="56,100 132,20 132,180"/></g>
+<!-- <g id="inner" fill="#061a3e"><polygon points="56,100 132,20 132,180"/></g> -->
+</svg>
